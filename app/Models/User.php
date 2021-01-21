@@ -19,7 +19,6 @@ class User extends Authenticatable
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use Illuminate\Support\Str;
 
     /**
      * The attributes that are mass assignable.
@@ -62,8 +61,5 @@ class User extends Authenticatable
     public function questions(){
         return $this->hasMany(Question::class);
     }
-    public function setTitleAttribute($value){
-        $this->attributes['title'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
-    }
+
 }
